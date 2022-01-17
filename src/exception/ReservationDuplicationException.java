@@ -1,5 +1,7 @@
 package exception;
 
-public class ReservationDuplicationException {
-
+public class ReservationDuplicationException extends Exception {
+	public ReservationDuplicationException(String msg) {
+		super(msg);
+	}
 }

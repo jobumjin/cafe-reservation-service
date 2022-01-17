@@ -17,9 +17,10 @@ public class CafeUser {
 	private String pnum;
 	private int reserveTime;
 	
-	public CafeUser(String name, String id, String pnum) {
+	public CafeUser(String name, String id, String joinDate, String pnum) {
 		this.name = name;
 		this.id = id;
+		this.joinDate = joinDate;
 		this.pnum = pnum;
 	}
 }
