@@ -27,7 +27,11 @@ public class CafeModel {
 		cafeUserList.add(new CafeUser(name, id, joinDate, pnum));
 	}
 	
-	public void updateUserInfo(String name, String id, String pnum) throws IdNotFoundException{
+	public void updateUserInfo(String name, String id, String pnum) throws IdNotFoundException, NotEnoughInfoException{
+		if(id == null || name == null || pnum == null)
+			throw new NotEnoughInfoException("필수 입력 정보가 입력되지 않았습니다.");
+		
+		
 		for(CafeUser user : cafeUserList) {
 			if(user.getId().equals(id)){
 				user.setName(name);
@@ -37,8 +41,13 @@ public class CafeModel {
 		throw new IdNotFoundException("아이디가 없습니다.");
 	}
 	
-	public int deleteUserInfo(String id) {
-		return 0;
+	public int deleteUserInfo(String id) throws IdNotFoundException {	
+		for(CafeUser user : cafeUserList) {
+			if(user.getId().equals(id)){
+				return user.getPoint();
+			}
+		}
+		throw new IdNotFoundException("아이디가 없습니다.");
 	}
 	
 	public CafeUser searchUserInfo(String id) {
