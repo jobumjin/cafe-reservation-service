@@ -50,8 +50,13 @@ public class CafeModel {
 		throw new IdNotFoundException("아이디가 없습니다.");
 	}
 	
-	public CafeUser searchUserInfo(String id) {
-		return null;
+	public CafeUser searchUserInfo(String id) throws IdNotFoundException{
+		for(CafeUser user : cafeUserList) {
+			if(user.getId().equals(id)){
+				return user;
+			}
+		}
+		throw new IdNotFoundException("아이디가 없습니다.");
 	}
 	
 	public ArrayList<CafeUser> getAllUserInfo(){
