@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 
 import exception.IdDuplicationException;
+import exception.IdNotFoundException;
 import exception.NotEnoughInfoException;
 import model.dto.CafeUser;
 
@@ -26,8 +27,14 @@ public class CafeModel {
 		cafeUserList.add(new CafeUser(name, id, joinDate, pnum));
 	}
 	
-	public void updateUserInfo(String name, String id, String pnum) {
-		
+	public void updateUserInfo(String name, String id, String pnum) throws IdNotFoundException{
+		for(CafeUser user : cafeUserList) {
+			if(user.getId().equals(id)){
+				user.setName(name);
+				user.setPnum(pnum);
+			}
+		}
+		throw new IdNotFoundException("아이디가 없습니다.");
 	}
 	
 	public int deleteUserInfo(String id) {
