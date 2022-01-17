@@ -8,6 +8,7 @@ import exception.NotEnoughInfoException;
 import exception.NotEnoughMoneyException;
 import exception.ReservationDuplicationException;
 import model.dto.CafeUser;
+import view.StartView;
 
 public class CafeModel {
 	private static CafeModel instance = new CafeModel();
@@ -33,7 +34,6 @@ public class CafeModel {
 		if(id == null || name == null || pnum == null)
 			throw new NotEnoughInfoException("필수 입력 정보가 입력되지 않았습니다.");
 		
-		
 		for(CafeUser user : cafeUserList) {
 			if(user.getId().equals(id)){
 				user.setName(name);
@@ -52,8 +52,13 @@ public class CafeModel {
 		throw new IdNotFoundException("아이디를 찾을 수 없습니다.");
 	}
 	
-	public CafeUser searchUserInfo(String id) {
-		return null;
+	public CafeUser searchUserInfo(String id) throws IdNotFoundException{
+		for(CafeUser user : cafeUserList) {
+			if(user.getId().equals(id)){
+				return user;
+			}
+		}
+		throw new IdNotFoundException("아이디가 없습니다.");
 	}
 	
 	public ArrayList<CafeUser> getAllUserInfo(){
