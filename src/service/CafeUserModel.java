@@ -45,7 +45,9 @@ public class CafeUserModel {
 	public int deleteUserInfo(String id) throws IdNotFoundException {	
 		for(CafeUser user : cafeUserList) {
 			if(user.getId().equals(id)){
-				return user.getPoint();
+				int point = user.getPoint();
+				cafeUserList.remove(user);
+				return point;
 			}
 		}
 		throw new IdNotFoundException("아이디를 찾을 수 없습니다.");
@@ -64,10 +66,11 @@ public class CafeUserModel {
 		return cafeUserList;
 	}
 	
-	public void chargePoint(String id, int money) throws IdNotFoundException {
+	public int chargePoint(String id, int money) throws IdNotFoundException {
 		for(CafeUser user : cafeUserList) {
 			if(user.getId().equals(id)){
 				user.setPoint(user.getPoint() + money);
+				return user.getPoint();
 			}
 		}
 		throw new IdNotFoundException("아이디를 찾을 수 없습니다.");
