@@ -28,6 +28,7 @@ public class SuccessEndView {
 		if(reservationList == null) {
 			System.out.println("예약 정보가 없습니다.");
 		}
+		
 		for(CafeReservation r : reservationList) {
 			System.out.println(r);
 		}

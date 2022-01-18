@@ -74,27 +74,27 @@ public class CafeController {
 		}
 	}
 	
-	public void reserve(CafeUser user, CafePlace place, int time, int people){
+	public void reserve(CafeUser user, CafePlace place, int startTime, int endTime, int people){
 		try {			
-			reservationService.reserve(user, userService.getAllUserInfo(), place, time, people);
+			reservationService.reserve(user, userService.getAllUserInfo(), place, startTime, endTime, people);
 		}catch (Exception e) {
 			//e.printStackTrace();
 			FailEndView.showError(e.getMessage());
 		}
 	}
 	
-	public void cancleReservation(CafeReservation reserve){
+	public void cancleReservation(String reservationNum){
 		try {
-			reservationService.cancleReservation(reserve);
+			reservationService.cancleReservation(reservationNum);
 		}catch (Exception e) {
 			//e.printStackTrace();
 			FailEndView.showError(e.getMessage());
 		}
 	}
 	
-	public void updateReservation(CafeReservation reserve, CafePlace place, int time, int people){
+	public void updateReservation(String reservationNum, CafePlace place, int startTime, int endTime, int people){
 		try {
-			reservationService.updateReservation(reserve, place, time, people);
+			reservationService.updateReservation(reservationNum, place, startTime, endTime, people);
 		}catch (Exception e) {
 			//e.printStackTrace();
 			FailEndView.showError(e.getMessage());

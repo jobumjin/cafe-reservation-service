@@ -5,3 +5,4 @@ public class ReservationImpossibleException extends Exception {
 		super(msg);
 	}
 }
+

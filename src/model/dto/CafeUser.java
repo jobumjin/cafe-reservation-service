@@ -10,11 +10,22 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class CafeUser {
 	private String name;
 	private String id;
 	private String joinDate;
 	private String pnum;
 	private int point;
+	private String reservation;
+	
+	@Override
+	public String toString() {
+		if(reservation == null) {
+			return "CafeUser [name=" + name + ", id=" + id + ", joinDate=" + joinDate + ", pnum=" + pnum + ", point="
+					+ point + ", reservation=예약 정보 없음]";
+		}else {
+			return "CafeUser [name=" + name + ", id=" + id + ", joinDate=" + joinDate + ", pnum=" + pnum + ", point="
+					+ point + ", reservation=" + reservation + "]";
+		}		
+	}
 }
