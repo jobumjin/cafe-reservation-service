@@ -11,10 +11,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class CafeUser {
-	private String name;
-	private String id;
-	private String joinDate;
-	private String pnum;
-	private int point;
+public class CafeReservation {
+	private String reservationNum;
+	private CafeUser user;
+	private CafePlace place;
+	private int time;
 }
