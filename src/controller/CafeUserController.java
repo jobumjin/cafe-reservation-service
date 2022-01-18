@@ -1,13 +1,15 @@
 package controller;
 
-import service.CafeModel;
+import service.CafeUserModel;
 import view.FailEndView;
 import view.SuccessEndView;
 
 public class CafeUserController {
 	
 	private static CafeUserController instance = new CafeUserController();
-	private static CafeModel service = CafeModel.getInstance();
+	private static CafeUserModel service = CafeUserModel.getInstance();
+	
+	private CafeUserController() {}
 	
 	public static CafeUserController getInstance() {
 		return instance;
@@ -16,10 +18,10 @@ public class CafeUserController {
 	public void join(String name, String id, String joinDate, String pnum){
 		try {
 				service.join(name, id, joinDate, pnum);
-			}catch (Exception e) {
-				e.printStackTrace();
-				FailEndView.showError(e.getMessage());
-			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			FailEndView.showError(e.getMessage());
+		}
 	}
 	
 	public void updateUserInfo(String name, String id, String pnum){
